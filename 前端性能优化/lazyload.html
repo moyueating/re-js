@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lazy Load</title>
+  <style>
+    .img {
+      width: 200px;
+      height:200px;
+      background-color: gray;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+          // 注意我们并没有为它引入真实的src
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group51/M00/EF/D9/wKgKnlvrg_PRGcecAAMDt-WfDw4421.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+        <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group53/M01/3C/CF/wKgLcVwYidGjapr-AAE2-Phi5Lo539.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+        <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group43/M02/A5/7D/wKgKklsj4FWCQJ3_ABqD0DK-doI808.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+        <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group42/M05/FC/DC/wKgJ81ri7TnjvY5dAADDrvK8B8E096.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+        <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group23/M02/5D/93/wKgJL1g0SKzTRwU9AAG1LGWoXWg235.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+         <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group34/M07/CC/A2/wKgJYVntlVXzn6iNAAA-uzv75vM340.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+         <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group52/M0A/82/F0/wKgLcFw_DbGQuPe9AACVNuJf2uc317.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+         <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group54/M03/76/04/wKgLfVw-j8SxjOo3AATUa-pm_08542.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+         <div class="img">
+          <img class="pic" alt="加载中" data-src="https://imagev2.xmcdn.com/group47/M05/A1/0F/wKgKm1t6mm2zPNYNAARdrdkgG-k880.jpg!strip=1&quality=7&magick=webp&op_type=5&upload_type=cover&name=web_large&device_type=ios">
+        </div>
+      </div>
+  <script>
+     // 获取可视区域的高度
+    const viewHeight = window.innerHeight || document.documentElement.clientHeight
+    const imgs = document.getElementsByTagName('img')
+    // num用于统计当前显示到了哪一张图片，避免每次都从第一张图片开始检查是否露出
+    let hasRenderIndex = 0
+
+    function lazyLoad(){
+      const len = imgs.length
+      for(let i=hasRenderIndex; i<len; i++){
+        const el = imgs[i]
+        const distance = viewHeight -  el.getBoundingClientRect().top
+        if(distance >= 0){
+          el.src = el.getAttribute('data-src')
+          el.alt = ''
+          hasRenderIndex += 1
+        }
+      }
+    }
+    lazyLoad()
+    window.addEventListener('scroll', lazyLoad, false)
+
+  </script>
+</body>
+</html>
