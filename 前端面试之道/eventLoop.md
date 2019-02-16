@@ -44,5 +44,5 @@ console.log('script end')
 
 ### 参考资料
 
-[event-loop 考拉](https://github.com/kaola-fed/blog/issues/234)
+[event-loop 考拉](https://github.com/kaola-fed/blog/issues/234)  
 [vue社区 event-loop](https://mp.weixin.qq.com/s/mT5XvdMnlw0Qt8EBvgDtYQ)
