@@ -1,5 +1,7 @@
 // call apply bind函数实现方式
 
+// 让你写个bind函数啊 compose函数啊 flatten函数啊 比较简单的那种。
+
 Function.prototype.myCall = function(context, ...rest)  {
   context = context || window
   context.fn = this
