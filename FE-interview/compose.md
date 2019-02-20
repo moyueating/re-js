@@ -8,9 +8,9 @@
 
 
 |   callback   |  accumulator  | currentValue | return value |
-| ------------ | ----------------------------------------------------- | ------------ | ------------ |
-| first call   |  A  |  B  |  function(...args){return A(B(...args))}
-| second call  |  function(...args){return A(B(...args))} | C | function(...args){return A(B(C(...args)))}
+| ------------ | ----------------------------------------------------- | ------------ | -------------------------------------------- |
+| first call   |          A                                            |       B      |  function(...args){return A(B(...args))}     |
+| second call  |      function(...args){return A(B(...args))}          |       C      |  function(...args){return A(B(C(...args)))}  |
 
 
 
