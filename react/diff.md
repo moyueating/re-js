@@ -24,3 +24,4 @@ React是基于组件构建应用的，对于组件见的比较所采取的策略
 
 
 ### React Fiber
+[React Fiber](https://www.infoq.cn/article/what-the-new-engine-of-react)
