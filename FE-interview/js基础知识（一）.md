@@ -24,9 +24,9 @@ obj * 2
 // toString
 // TypeError: Cannot convert object to primitive value
 obj + 'string'
-// 这里将obj转换成String类型，先调用valueOf，然后toString，最后报错
-// valueOf
+// 这里将obj转换成String类型，先调用toString，然后valueOf，最后报错
 // toString
+// valueOf
 // TypeError: Cannot convert object to primitive value
 ```
 
