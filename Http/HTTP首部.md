@@ -19,6 +19,7 @@
 - Host 服务器的域名  
 - Referer 浏览器访问的前一个页面  
 - User-Agent 客户端信息  
+- Cookie  
 
 - If-Match 两端资源标记比较, E-Tag,两者标记一致才处理请求  
 - If-None-Match  两端资源比较，两者不一致才处理请求，和If-Match相反  
@@ -34,6 +35,7 @@
 - Location 重定向到某个url  
 - Server 服务器名字  
 - WWW-Authenticate 获取资源需要的验证信息  
+- Set-Cookie  
 
 ### 实体首部字段
 
