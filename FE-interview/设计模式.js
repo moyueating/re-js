@@ -92,5 +92,3 @@ function addEvent(elm, evType, fn, useCapture) {
     elm["on" + evType] = fn
   }
 }
-
-

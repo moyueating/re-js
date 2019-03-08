@@ -9,7 +9,35 @@
 可以把执行栈认为是一个存储函数调用的栈结构，遵循先进后出的原则。  
 ![执行栈动图](https://user-gold-cdn.xitu.io/2018/11/13/1670d2d20ead32ec?imageslim)
 
+
+### async/await
+async 函数必定返回 Promise，我们把所有返回Promise的函数都可以认为是异步函数。
 ```js
+async function foo(){
+  console.log('foo')
+}
+var test = foo() // 这里执行foo其实等价于下面
+
+var test = new Promise((resolve, reject) => {
+  resolve(undefined)
+})
+```
+```js
+function sleep(duration){
+  return new Promise((resolve,reject) => {
+    setTimeout(resolve,duration)
+  })
+}
+async function foo(){
+  console.log('a')
+  await sleep(2000)
+  console.log('b')
+}
+foo()
+```
+
+```js
+// 经典面试
 console.log('script start') 
 
 async function async1() {
@@ -18,6 +46,9 @@ async function async1() {
 }
 async function async2() {
   console.log('async2 end')
+  return new Promise((resolve) => {
+    resolve(undefined)
+  })
 }
 async1()
 
@@ -37,8 +68,39 @@ new Promise(resolve => {
   })
 
 console.log('script end')
+// script start => async2 end => Promise => script end => async1 end => promise1 => promise2  => setTimeout
+```
 
-// script start => async2 end => Promise => script end => promise1 => promise2 => async1 end => setTimeout
+
+```js
+async function async1(){
+  console.log('async1 start')
+  await async2()
+  console.log('async1 end')
+}
+
+async function async2(){
+  console.log('async2')
+}
+
+console.log('script start')
+
+setTimeout(function(){
+  console.log('setTimeout')
+},0)
+
+async1()
+
+new Promise((resolve, reject) => {
+  console.log('promise1')
+  resolve()
+}).then(res => {
+  console.log('promise2')
+})
+
+console.log('script end')
+
+// script start =>  async1 start =>  async2 => promise1 => script end => async1 end => promise2
 ```
 
 
