@@ -11,7 +11,7 @@ var obj = new Proxy({}, {
 });
 
 // 使用Proxy来实现数据响应式
-//我们通过自定义 set 和 get 函数的方式，在原本的逻辑中插入了我们的函数逻辑，实现了在对对象任何属性进行读写时发出通知。
+// 我们通过自定义 set 和 get 函数的方式，在原本的逻辑中插入了我们的函数逻辑，实现了在对对象任何属性进行读写时发出通知。
 // 当然这是简单版的响应式实现，如果需要实现一个 Vue 中的响应式，需要我们在 get 中收集依赖，在 set 派发更新，
 // 之所以 Vue3.0 要使用 Proxy 替换原本的 API 原因在于 Proxy 无需一层层递归为每个属性添加代理，一次即可完成以上操作，性能上更好，
 // 并且原本的实现有一些数据更新不能监听到，但是 Proxy 可以完美监听到任何方式的数据改变，唯一缺陷可能就是浏览器的兼容性不好了。
@@ -23,15 +23,16 @@ var testObj = {
 
 var watch = (obj) => {
   const handler = {
-    get: function(target, key, receiver){
-      console.log(`正在获取 ${key} 属性`)
-      return Reflect.get(target, key, receiver)
+    get(target, key, receiver){
+      console.log(`正在获取属性${key}的值`)
+      Reflect.get(target, key, receiver)
     },
-    set: function(target, key, value, receiver){
-      console.log(`正在设置 ${key} 属性为 ${value}`)
-      return Reflect.set(target, key, value, receiver)
+    set(target, key, val, receiver){
+      console.log(`正在设置属性${key}的值为${val}`)
+      Reflect.set(target, key, val, receiver)
     }
   }
+  
   return new Proxy(obj, handler)
 }
 
