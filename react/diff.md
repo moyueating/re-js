@@ -11,7 +11,7 @@ React通过updateDepth对Virtual DOM树进行层级控制的时候，只会对�
 Tip: 开发组件的时候保持稳定的DOM结构有助于性能的提升。例如，可以通过CSS隐藏或者显示节点，而不是真正的移除或者添加DOM节点
 
 ### component diff
-React是基于组件构建应用的，对于组件见的比较所采取的策略也是高效的。  
+React是基于组件构建应用的，对于组件内的比较所采取的策略也是高效的。  
 - 同一个类型的组件，按照tree diff的策略  
 - 同一个类型的组件，如果Virtual DOM没有发生任何改变，React允许用户通过shouldComponentUpdate()来判断该组件是否需要进行diff算法  
 - 不同类型的组件，直接替换整个组件下的所有子节点  
