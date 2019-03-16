@@ -37,7 +37,7 @@
 - WWW-Authenticate 获取资源需要的验证信息  
 - Set-Cookie  
 
-### 实体首部字段
+### 实体首部字段(用于补充内容的更新时间等与实体相关的信息)
 
 - Allow 允许的请求方式  
 - Content-Encoding 告知客户端实体的编码方式  
