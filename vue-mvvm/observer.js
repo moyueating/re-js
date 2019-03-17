@@ -1,4 +1,4 @@
-
+// Dep是依赖收集，收集的是订阅者的信息
 class Dep {
   constructor () {
     this.subs = [];
@@ -40,6 +40,7 @@ function observer(value) {
   })
 }
 
+// 观察者，
 class Watcher {
   constructor () {
     Dep.target = this;

@@ -102,7 +102,7 @@ var gen = function* (){
 // 手动
 var g = gen()
 g.next().value.then(function(data){
-    g.next(data).value().then(function(data2){
+    g.next(data).value.then(function(data2){
         g.next(data2)
     })
 })

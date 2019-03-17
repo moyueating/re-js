@@ -32,3 +32,22 @@ function curry(fn){
 test = curry(add)
 test(3)(4)
 
+
+
+function curry(fn){
+    if(fn.length <= 1){
+        return fn
+    }
+
+    function _curried(depth, ...args){
+        return function(newArg){
+            if(depth === 1){
+                return fn(...args, newArg)
+            }else{
+                _curried(depth-1, ...args, newArg )
+            }
+        }
+    }
+
+    _curried(fn.length)
+}

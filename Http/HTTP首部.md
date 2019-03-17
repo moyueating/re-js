@@ -5,7 +5,7 @@
 - Date 创建HTTP报文的日期时间  
 - Transfer-Encoding  传输报文主体的编码方式  
 - Via  代理服务器相关信息  
-- Waring 问题警告
+- Warning 问题警告
 
 ### Request Header
 
@@ -36,6 +36,9 @@
 - Server 服务器名字  
 - WWW-Authenticate 获取资源需要的验证信息  
 - Set-Cookie  
+
+- Expires 资源的过期时间  
+- Last-Modified 资源最终修改时间  
 
 ### 实体首部字段(用于补充内容的更新时间等与实体相关的信息)
 

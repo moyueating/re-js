@@ -12,6 +12,7 @@
 
 ### async/await
 async 函数必定返回 Promise，我们把所有返回Promise的函数都可以认为是异步函数。
+
 ```js
 async function foo(){
   console.log('foo')
@@ -22,6 +23,7 @@ var test = new Promise((resolve, reject) => {
   resolve(undefined)
 })
 ```
+
 ```js
 function sleep(duration){
   return new Promise((resolve,reject) => {
@@ -46,9 +48,9 @@ async function async1() {
 }
 async function async2() {
   console.log('async2 end')
-  return new Promise((resolve) => {
-    resolve(undefined)
-  })
+  // return new Promise((resolve) => {
+  //   resolve(undefined)
+  // })
 }
 async1()
 
