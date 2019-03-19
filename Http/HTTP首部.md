@@ -21,6 +21,7 @@
 - User-Agent 客户端信息  
 - Cookie  
 
+<!-- 缓存相关的请求头 -->
 - If-Match 两端资源标记比较, E-Tag,两者标记一致才处理请求  
 - If-None-Match  两端资源比较，两者不一致才处理请求，和If-Match相反  
 - If-Modified-Since 表示一个时间节点，在这个时间节点之后又更新的正常处理请求，状态码200，没有更新的则返回304
@@ -37,8 +38,15 @@
 - WWW-Authenticate 获取资源需要的验证信息  
 - Set-Cookie  
 
+<!-- 缓存相关响应头 -->
 - Expires 资源的过期时间  
 - Last-Modified 资源最终修改时间  
+
+
+<!-- CORS相关的响应头 -->
+- Access-Control-Allow-Origin CORS跨域设置  
+- Access-Control-Allow-Credentials  
+
 
 ### 实体首部字段(用于补充内容的更新时间等与实体相关的信息)
 

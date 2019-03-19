@@ -1,4 +1,4 @@
-
+// 由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志
 // yield表达式没有返回值，恒返回undefined
 
 function* gen(){
