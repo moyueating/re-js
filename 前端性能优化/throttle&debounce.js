@@ -2,7 +2,7 @@
 // 在一段时间内，只会触发一次事件
 // 有头没尾
 function throttle1(fn, wait, context) {
-  let last
+  let last=0
   return function(...args){
     const now = +new Date()
     if(now - last > wait){
@@ -24,7 +24,7 @@ function throttle2(fn, wait, context) {
 
 // 有头有尾
 function throttle(fn, wait, context){
-  let last
+  let last=0
   let timer
   return function(...args){
     const now = +new Date()
