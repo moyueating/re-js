@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="test"></div>
+  
+
+  <script>
+    const dom = document.getElementById('test')
+    const event = document.createEvent('Event');
+    event.initEvent('test', true, true)
+
+    dom.addEventListener('test', function(e){
+      console.log('触发了test事件')
+    })
+    dom.dispatchEvent(event)
+  </script>
+</body>
+</html>
