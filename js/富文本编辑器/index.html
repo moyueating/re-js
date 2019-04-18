@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #richedit{
+      width: 300px;
+      height: 500px;
+      background: lightgray;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <div>
+    <button onclick="bold()">加粗</button>
+    <button onclick="underline()">下划线</button>
+    <button onclick="font()">字体大小</button>
+    <button onclick="backcolor()">背景色</button>
+  </div>
+  <br />
+  <div contenteditable="true" id="richedit"></div>
+
+
+  <script>
+
+
+    function bold(){
+      const text = document.getElementById('richedit')
+      text.focus()
+      document.execCommand('bold', false, null)
+    }
+
+    function underline(){
+      const text = document.getElementById('richedit')
+      text.focus()
+      document.execCommand('underline', false, null)
+    }
+
+    function font(){
+      const text = document.getElementById('richedit')
+      text.focus()
+      document.execCommand('fontsize', false, 5)
+    }
+
+    function backcolor(){
+      const text = document.getElementById('richedit')
+      text.focus()
+      document.execCommand('backcolor', false, 'lightgoldenrodyellow')
+    }
+  </script>
+</body>
+</html>
