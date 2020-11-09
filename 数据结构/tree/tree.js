@@ -1,4 +1,6 @@
 
+// 遍历的前中后就是按照访问根节点的前中后来判断的
+
 class Node {
   constructor(key){
     this.key = key
