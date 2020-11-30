@@ -63,7 +63,31 @@ obj == 'default' // true
 String(obj) // 'str'
 ```
 
+
+```js
+// 小练习，实现一个add方法
+function add() {
+    // ...
+}
+
+// 满足以下类型的调用和计算
+add(1)(2)(3) + 1  // 输出 7
+```
+
+```js
+function add(n){
+  function fn(m){
+    return add(n + m)
+  }
+  fn.valueOf = function(){
+    return n
+  }
+  return fn
+}
+```
+
 ### 参考链接
 [阮一峰ES6symbol](http://es6.ruanyifeng.com/#docs/symbol)  
 [前端面试之道](https://juejin.im/book/5bdc715fe51d454e755f75ef/section/5bdc715f6fb9a049c15ea4e0)  
 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toPrimitive)  
+[深入理解js中Object类型转换](https://zhuanlan.zhihu.com/p/29730094)

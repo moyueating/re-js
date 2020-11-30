@@ -9,7 +9,7 @@ function add(x, y){
 //         return x+ y
 //     }
 // }
-curry(add)
+// curry(add)
 
 
 function curry(fn){
@@ -22,7 +22,7 @@ function curry(fn){
             if(depth === 1){
                 return fn(...args, newArgument)
             }
-            return _curried(depth-1,...args,newArgument)
+            return _curried(depth-1, ...args, newArgument)
         }
     }
 
