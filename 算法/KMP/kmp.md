@@ -1,0 +1,1 @@
+[kmp算法](https://www.zhihu.com/question/21923021/answer/281346746)
