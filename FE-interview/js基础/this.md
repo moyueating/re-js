@@ -26,6 +26,7 @@ var obj = {
 var say = obj.say
 say() // 'hello window'
 ```
+- 构造函数调用，指向这个实例
 
 ```js
 const Quo  = function(status) {

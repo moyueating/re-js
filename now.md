@@ -4,6 +4,7 @@
 - 主要是react技术栈
     - hooks
     - fiber
+    - redux
 
 
 - node 
