@@ -5,36 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JS阻塞测试</title>
-  <style>
+  <!-- <style>
     #container {
       background-color: yellow;
       width: 100px;
       height: 100px;
     }
-  </style>
-  <script>
+  </style> -->
+  <!-- <script>
     // 尝试获取container元素
     var container = document.getElementById("container")
     console.log('container', container)
-  </script>
+  </script> -->
 </head>
 <body>
   <div id="container"></div>
   <script>
     // 尝试获取container元素
     var container = document.getElementById("container")
-    console.log('container', container)
+    // console.log('container', container)
     // 输出container元素此刻的背景色
-    a = 0
-    for(var i=0; i< 1000000000; i++){
-         a += i
-    }
     console.log('container bgColor', getComputedStyle(container).backgroundColor)
+    container.style.backgroundColor = 'yellow';
+    // a = 0
+    // for(var i=0; i< 1000000000; i++){
+    //      a += i
+    // }
+    // console.log('container bgColor', getComputedStyle(container).backgroundColor)
   </script>
-  <!-- <style>
+  <style>
     #container {
       background-color: blue;
+      width: 100px;
+      height: 100px;
     }
-  </style> -->
+  </style>
 </body>
 </html>
