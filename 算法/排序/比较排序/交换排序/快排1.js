@@ -3,7 +3,6 @@ function quickSort(arr, left, right) {
         partitionIndex,
         left = typeof left != 'number' ? 0 : left,
         right = typeof right != 'number' ? len - 1 : right;
-
     if (left < right) {
         partitionIndex = partition(arr, left, right);
         quickSort(arr, left, partitionIndex-1);
@@ -14,15 +13,15 @@ function quickSort(arr, left, right) {
 
 function partition(arr, left ,right) {     // 分区操作
     var pivot = left,                      // 设定基准值（pivot）
-        index = pivot + 1;
-    for (var i = index; i <= right; i++) {
+        counter = pivot + 1;
+    for (var i = counter; i <= right; i++) {
         if (arr[i] < arr[pivot]) {
-            swap(arr, i, index);
-            index++;
+            swap(arr, i, counter);
+            counter++;
         }        
     }
-    swap(arr, pivot, index - 1);
-    return index-1;
+    swap(arr, pivot, counter - 1);
+    return counter - 1;
 }
 
 function swap(arr, i, j) {
@@ -31,4 +30,4 @@ function swap(arr, i, j) {
     arr[j] = temp;
 }
 
-console.log(quickSort([2,1]))
+console.log(quickSort([23, 45, 12, 4, 67, 34, 5, 24]))

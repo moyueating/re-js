@@ -17,17 +17,16 @@ function quickSort(arr, left, right){
 			i++
 		}
 		// 交换两者
-		if(i<j){
-			const temp = arr[i]
-			arr[i] = arr[j];
-			arr[j] = temp;
-		}
+		const temp = arr[i]
+		arr[i] = arr[j];
+		arr[j] = temp;
 	}
 	arr[left] = arr[i];
 	arr[i] = partition;
 	quickSort(arr, left, i - 1);
-	quickSort(arr, i+1, right);
+	quickSort(arr, i + 1, right);
 	return arr;
 }
 
-console.log(quickSort([23, 45, 12, 4, 67, 34, 5, 24, 12], 0, 8))
+const origin = [23, 45, 12, 4, 67, 34, 5, 24, 12]
+console.log(quickSort(origin, 0, origin.length - 1))
