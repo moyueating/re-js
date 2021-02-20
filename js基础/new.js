@@ -9,7 +9,15 @@
 
 function myNew(...rest){
   const obj = {}
-  obj.__proto__ = Con.prototype
-  const result = Con.call(obj, rest)
+  let Constructor = rest.shift();
+  obj.__proto__ = Constructor.prototype
+  const result = Constructor.apply(obj, rest)
+  console.log(obj);
   return result instanceof Object ? result : obj
 }
+
+function ZZZ(){
+  this.name = 'zzz';
+}
+
+console.log(myNew(ZZZ))

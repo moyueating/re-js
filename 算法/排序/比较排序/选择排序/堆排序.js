@@ -8,7 +8,7 @@
 let len;
 function buildMaxHeap(arr) {
     len = arr.length;
-    for (let i = Math.floor(len / 2); i >= 0; i--) {
+    for (let i = Math.floor(len / 2 - 1); i >= 0; i--) {
         heapify(arr, i)
     }
 }
