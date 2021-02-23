@@ -33,6 +33,6 @@ const sendRequest = (urls, max) => {
     });
 };
 
-sendRequest(urls, 2).then(data => {
+sendRequest(urls, 4).then(data => {
     console.log('all complete', data);
 });

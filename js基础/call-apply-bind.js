@@ -20,19 +20,23 @@ Function.prototype.myApply = function(context, rest)  {
   return result
 }
 
-Function.prototype.myBind = function(context, ...rest) {
-  
-  context = context || window
-  const _this = this
+Function.prototype.myBind = function(bindThis, ...args) {
+
+  const target = this
   // 返回一个函数
-  return function Fn() {
+  function bound(...inArgs) {
     // 因为返回一个函数，我们可以 new F(), 所以需要判断
-    if(this instanceof Fn){
-      return new _this(...rest, arguments)
-    }else{
-      return _this.apply(context, rest.concat(...arguments))
-    }
+    return target.apply(this instanceof bound ? this : bindThis, args.concat(inArgs))
   }
+
+  // 继承
+  if(target.prototype){
+    function Empty(){};
+    Empty.prototype = target.prototype;
+    bound.prototype = new Empty();
+  }
+
+  return bound;
 }
 
 function Food(name, price){

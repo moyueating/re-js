@@ -75,12 +75,12 @@ add(1)(2)(3) + 1  // 输出 7
 ```
 
 ```js
-function add(n){
+function add(sum){
   function fn(m){
-    return add(n + m)
+    return add(sum + m)
   }
   fn.valueOf = function(){
-    return n
+    return sum
   }
   return fn
 }
