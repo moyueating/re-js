@@ -17,38 +17,30 @@ function heapify(arr, i) {
     let left = 2 * i + 1;
     let right = 2 * i + 2;
     let larget = i;
-
     if (left < len && arr[left] > arr[larget]) {
         larget = left
     }
-
     if (right < len && arr[right] > arr[larget]) {
         larget = right
     }
-
     if (i !== larget) {
         swap(arr, i, larget);
         heapify(arr, larget);
     }
-
 }
-
 function swap(arr, i, j) {
     const temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp
 }
-
 function heapSort(arr) {
     buildMaxHeap(arr);
-
     for (let i = arr.length - 1; i > 0; i--) {
         swap(arr, 0, i);
         // 每一轮找到的最大值在下一轮循环中需要提出掉
         len--;
         heapify(arr, 0);
     }
-
     return arr;
 }
 

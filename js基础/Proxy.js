@@ -25,11 +25,14 @@ var watch = (obj) => {
   const handler = {
     get(target, key, receiver){
       console.log(`正在获取属性${key}的值`)
-      Reflect.get(target, key, receiver)
+      if(target[key] && typeof target[key] === 'object'){
+        return new Proxy(target[key], handler)
+      }
+      return Reflect.get(target, key, receiver)
     },
     set(target, key, val, receiver){
       console.log(`正在设置属性${key}的值为${val}`)
-      Reflect.set(target, key, val, receiver)
+      return Reflect.set(target, key, val, receiver)
     }
   }
   
@@ -37,5 +40,6 @@ var watch = (obj) => {
 }
 
 var testProxy = watch(testObj)
-testProxy.name // 正在获取 name 属性
-testProxy.name = 'test' // 正在设置 name 属性为 test
+// testProxy.name // 正在获取 name 属性
+testProxy.friends.push(5) // 正在获取 name 属性
+// testProxy.name = 'test' // 正在设置 name 属性为 test

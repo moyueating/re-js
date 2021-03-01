@@ -1,7 +1,5 @@
 function quickSort(arr, left, right){
-
 	if(left > right) return;
-
 	// 选取最左边的为基准值
 	const partition = arr[left];
 	let i = left;

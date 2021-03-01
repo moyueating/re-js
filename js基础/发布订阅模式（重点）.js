@@ -1,16 +1,19 @@
-function My(){
-    this.list = []
-    this.listen = function (fn){
-        this.list.push(fn)
+class Event{
+    constructor(){}
+
+    handler = {}
+
+    add(type, fn){
+        if(!this.handler[type]){
+            this.handler[type] = [];
+        }
+        this.handler[type].push(fn)
     }
-    this.trigger = function (...args){
-        this.list.forEach(fn => {
-            fn.call(null, ...args)
+
+    trigger(type, ...args){
+        const all = this.handler[type];
+        all.forEach(h => {
+            h(...args)
         })
     }
 }
-
-me = new My()
-me.listen(function(){
-    console.log(1111)
-})

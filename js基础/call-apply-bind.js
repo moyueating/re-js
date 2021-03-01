@@ -12,7 +12,6 @@ Function.prototype.myCall = function(context, ...rest)  {
 
 
 Function.prototype.myApply = function(context, rest)  {
-
   context = context || window
   context.fn = this
   const result = rest ? context.fn(...rest) : context.fn()
@@ -21,14 +20,12 @@ Function.prototype.myApply = function(context, rest)  {
 }
 
 Function.prototype.myBind = function(bindThis, ...args) {
-
   const target = this
   // 返回一个函数
   function bound(...inArgs) {
     // 因为返回一个函数，我们可以 new F(), 所以需要判断
     return target.apply(this instanceof bound ? this : bindThis, args.concat(inArgs))
   }
-
   // 继承
   if(target.prototype){
     function Empty(){};
@@ -38,6 +35,8 @@ Function.prototype.myBind = function(bindThis, ...args) {
 
   return bound;
 }
+
+
 
 function Food(name, price){
   this.name = name
