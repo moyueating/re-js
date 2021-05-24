@@ -11,17 +11,13 @@ class MyPromise {
     }
 
     _handle = (callback) => {
-        const {
-            onFullFilled,
-            resolve,
-        } = callback;
         if(this.state === PENDING){
             this.callbacks.push(callback)
         }else if(this.state === FULLFILLED){
-            if(onFullFilled){
-                resolve(onFullFilled(this.fullfilledValue))
+            if(callback.onFullFilled){
+                callback.resolve(callback.onFullFilled(this.fullfilledValue))
             }else{
-                resolve(this.fullfilledValue);
+                callback.resolve(this.fullfilledValue);
             }
         }
     }
@@ -52,8 +48,11 @@ new MyPromise((resolve, reject) => {
         resolve(1111)
     }, 1000)
 }).then(data => {
-    console.log('resolve '+`${data}-2222`)
-    return `${data}-2222`;
+    setTimeout(() => {
+        console.log('resolve '+`${data}-2222`)
+        return `${data}-2222`;
+    }, 2000)
+
 }).then(data => {
     setTimeout(() => {
         console.log('resolve '+`${data}-3333`)

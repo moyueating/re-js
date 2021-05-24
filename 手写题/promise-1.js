@@ -1,5 +1,3 @@
-// https://zhuanlan.zhihu.com/p/58428287
-
 const PENDING = 'PENDING';
 const FULLFILLED = 'FULLFILLED';
 const REJECTED = 'REJECTED';
