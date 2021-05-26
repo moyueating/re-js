@@ -1,3 +1,5 @@
+// https://www.ituring.com.cn/article/66566
+
 const PENDING = 'PENDING';
 const FULLFILLED = 'FULLFILLED';
 const REJECTED = 'REJECTED';

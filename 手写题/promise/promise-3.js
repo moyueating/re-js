@@ -12,23 +12,40 @@ class MyPromise {
 
     _handle = (callback) => {
         if(this.state === PENDING){
-            this.callbacks.push(callback)
-        }else if(this.state === FULLFILLED){
-            if(callback.onFullFilled){
-                callback.resolve(callback.onFullFilled(this.value))
-            }else{
-                callback.resolve(this.value);
-            }
-        }else if(this.state === REJECTED){
-            if(callback.onRejected){
-                callback.reject(callback.onRejected(this.value))
-            }else{
-                callback.reject(this.value);
-            }
+            this.callbacks.push(callback);
+            return;
+        }
+        let cb = this.state === FULLFILLED ? callback.onFullFilled : callback.onRejected;
+
+        if(!cb){
+            cb = this.state === FULLFILLED ? callback.resolve : callback.reject;
+            cb(this.value);
+            return
+        }
+
+        let ret = null;
+        try {
+            ret = cb(this.value)
+            cb = this.state === FULLFILLED ? callback.resolve : callback.reject; 
+        } catch (error) {
+            ret = error;
+            cb = callback.reject;
+        }finally{
+            cb(ret)
         }
     }
 
     _resolve = (value) => {
+        if(this.state !== PENDING) return
+        if (value && (typeof value === 'object' || typeof value === 'function')) {
+          var then = value.then;
+          if (typeof then === 'function') {
+            then.call(value, this._resolve, this._reject);
+            return;
+          }
+        }
+
+
         this.state = FULLFILLED;
         this.value = value
         this.callbacks.forEach(cb => {
@@ -59,22 +76,34 @@ class MyPromise {
         return this.then(null, onRejected)
     }
 
-    finally = (finalDone) => {
-        if(typeof finalDone !== 'function') return this.then();
+    finally(onDone) {
+        if (typeof onDone !== 'function') return this.then();
+    
         let MyPromise = this.constructor;
-        return this.then(value => {
-            MyPromise.resolve(finalDone()).then(() => value)
-        }, reason => {
-            MyPromise.resolve(finalDone()).then(() => { throw reason })
-        })
-    }
+        return this.then(
+          value => MyPromise.resolve(onDone()).then(() => value),
+          reason => MyPromise.resolve(onDone()).then(() => { throw reason })
+        );
+      }
+
+    static resolve(value) {
+        if (value && value instanceof MyPromise) {
+          return value;
+        } else if (value && typeof value === 'object' && typeof value.then === 'function') {
+          let then = value.then;
+          return new MyPromise(resolve => {
+            then(resolve);
+          });
+    
+        } else if (value) {
+          return new MyPromise(resolve => resolve(value));
+        } else {
+          return new MyPromise(resolve => resolve());
+        }
+      }
 }
 
 
 new MyPromise((resolve, reject) => {
-    setTimeout(() => {
-        reject('error')
-    }, 1000)
-}).catch(err => {
-    console.log(err);
-})
+    resolve('success')
+}).finally(() => {return 'ssss'}).then(a => console.log('sddf', a))
