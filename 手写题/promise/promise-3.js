@@ -79,11 +79,10 @@ class MyPromise {
     finally(onDone) {
         if (typeof onDone !== 'function') return this.then();
     
-        let MyPromise = this.constructor;
-        return this.then(
-          value => MyPromise.resolve(onDone()).then(() => value),
-          reason => MyPromise.resolve(onDone()).then(() => { throw reason })
-        );
+        // return this.then(
+        //   value => MyPromise.resolve(onDone()).then(() => value),
+        //   reason => MyPromise.resolve(onDone()).then(() => { throw reason })
+        // );
       }
 
     static resolve(value) {
@@ -105,5 +104,9 @@ class MyPromise {
 
 
 new MyPromise((resolve, reject) => {
-    resolve('success')
-}).finally(() => {return 'ssss'}).then(a => console.log('sddf', a))
+    setTimeout(() => {
+        resolve('success')
+    }, 1000)
+}).finally(() => {
+    console.log(11)
+}).then(data => console.log('===',data))
