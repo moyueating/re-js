@@ -67,6 +67,7 @@ var vue = new Vue({
   }
 })  
 // vue._data.test = 'sssss'
+console.log(vue._data.test);
 
 Dep.target = null
 
