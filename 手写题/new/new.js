@@ -7,7 +7,7 @@ function myNew(...args){
     let fn = args.shift();
     let obj = Object.create(fn.prototype);
     let ret = fn.call(obj, ...args);
-    return ret instanceof Object ? ret : obj;
+    return Object.prototype.toString.call(ret) === "[object Object]" ? ret : obj;
 }
 
 
