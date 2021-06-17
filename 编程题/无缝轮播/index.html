@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无缝轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .window{
+            width: 150px;
+            height: 100px;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 100px;
+            position: relative;
+        }
+        ul{
+            font-size: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        li{
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            font-size: 18px;
+            transform: translateX(0);
+        }
+        .lightcoral {
+            background: lightcoral;
+        }
+        .lightgreen{
+            background:  lightgreen;
+        }
+        .lightpink{
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div class="window">
+        <ul>
+            <li class='lightcoral'>1</li>
+            <li class='lightgreen'>2</li>
+            <li class='lightpink'>3</li>
+        </ul>
+    </div>
+
+    <script>
+
+
+        function setWidth(){
+            let ul = document.querySelector('ul');
+            let doms =  Array.from(document.querySelectorAll('li'));
+            ul.style.left = 0
+            ul.style.width = doms.length * 150 + 'px';
+        }
+        setWidth();
+
+        function scroll(){
+            let ul = document.querySelector('ul');
+            let doms =  Array.from(document.querySelectorAll('li'));
+            ul.style.transition = 'all 0.5s';
+            ul.style.left = `${parseInt(ul.style.left) - 150}px`;
+            setTimeout(() => {
+                if(parseInt(ul.style.left) == -150 * (doms.length - 1)){
+                    ul.style.transition = 'none';
+                    ul.style.left = 0;
+                    let temp = [...doms]
+                    let last = temp.pop();
+                    temp.forEach(dom => ul.removeChild(dom));
+                    temp.forEach(dom => ul.appendChild(dom))
+                }
+            }, 500)
+        }
+        setInterval(scroll, 2000)
+    </script>
+</body>
+</html>

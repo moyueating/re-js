@@ -1,0 +1,15 @@
+// 随机生成一个长度为 10 的整数类型的数组，例如 [2, 10, 3, 4, 5, 11, 10, 11, 20]，将其排列成一个新数组，要求新数组形式如下，例如 [[2, 3, 4, 5], [10, 11], [20]]。
+
+
+function generate(){
+    return new Array(10).fill(parseInt(Math.random() * 100))
+}
+
+function sort(arr){
+    arr = arr.sort((a, b) => a - b);
+    let result = [];
+    while(arr.length){
+        let ret = [];
+        for()
+    }
+}
