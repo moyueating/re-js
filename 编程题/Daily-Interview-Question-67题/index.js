@@ -6,10 +6,21 @@ function generate(){
 }
 
 function sort(arr){
-    arr = arr.sort((a, b) => a - b);
+    arr = [...new Set(arr)].sort((a, b) => a - b);
     let result = [];
     while(arr.length){
-        let ret = [];
-        for()
+        let ret = [arr[0]];
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i + 1] && arr[i] + 1 == arr[i+1]){
+                ret.push(arr[i+1]);
+            }else{
+                arr = arr.slice(i+1);
+                break;
+            }
+        }
+        result.push(ret);
     }
+    return result;
 }
+
+console.log(sort([2, 10, 3, 4, 5, 11, 10, 11, 20]))
