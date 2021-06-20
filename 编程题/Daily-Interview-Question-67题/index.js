@@ -2,7 +2,7 @@
 
 
 function generate(){
-    return new Array(10).fill(parseInt(Math.random() * 100))
+    return new Array(10).fill('').map(() => parseInt(Math.random() * 20))
 }
 
 function sort(arr){
@@ -22,5 +22,6 @@ function sort(arr){
     }
     return result;
 }
-
-console.log(sort([2, 10, 3, 4, 5, 11, 10, 11, 20]))
+let arr = generate();
+console.log(arr)
+console.log(sort(arr))
