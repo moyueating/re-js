@@ -26,7 +26,7 @@
 // 再往后推\3\4等，是同样的道理。
 // ————————————————
 
-
+// 正则中\1\2的涵义.js
 
 // https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/220
 // 找出字符串中连续出现最多的字符和个数 
