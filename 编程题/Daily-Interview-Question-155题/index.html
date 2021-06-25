@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .container {
+        width: 600px;
+        height: 300px;
+        display: flex;
+      }
+      .left {
+        flex: 1 2 500px;
+        background: red;
+      }
+      .right {
+        flex: 2 1 400px;
+        background: blue;
+      }
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+    <script>
+        // 子项的收缩比例 = 子项的宽度 * 子项的flex-shrink / 所有子项的（宽度 * flex-shrink）的和
+        // 子项的收缩宽度 = 子项的收缩比例 * 超出的宽度
+        let overWidth = 500+400-600;
+        let leftShrink = 500 * 2 / (500*2 + 400*1);
+        let rightShrink = 400 * 1 / (500*2 + 400*1);
+        let leftWidth = 500 - overWidth * leftShrink;
+        let rightWidth = 400 - overWidth * rightShrink;
+        console.log(leftWidth, rightWidth)
+    </script>
+
+</body>
+</html>

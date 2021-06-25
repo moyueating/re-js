@@ -14,24 +14,26 @@ function mockFetch(url){
 
 
 function multiRequest1(urls, maxNum){
+    let total = urls.length;
     return new Promise((resolve, reject) => {
-        let count = 0;
+        let tag = 0;
+        let finished = 0;
         let response = [];
-        function send(){
-            count++;
+        function send(index){
             let currentUrl = urls.shift();
             if(currentUrl){
                 mockFetch(currentUrl).then(res => {
-                    response.push(res);
-                    send();
+                    finished++;
+                    response[index] = res;
+                    send(tag++);
                 })
             }
-            if(count >= urls.length){
+            if(finished == total){
                 resolve(response);
             }
         }
-        while(count < maxNum){
-            send()
+        while(maxNum--){
+            send(tag++)
         }
     })
 }
@@ -53,7 +55,7 @@ function multiRequest2(urls, maxNum){
         addTask();
     }
 
-    return promise. then(() => Promise.all(allPromises))
+    return promise.then(() => Promise.all(allPromises))
 }
 
 
@@ -68,5 +70,5 @@ let urls = [
     'http://www.example_8.com/',
     'http://www.example_9.com/',
   ]
-// multiRequest1(urls, 3)
-multiRequest2(urls, 4)
+multiRequest1(urls, 3).then(res => console.log('all complete: ', res))
+// multiRequest2(urls, 4)
