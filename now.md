@@ -12,11 +12,16 @@
     - webp图片，动态切图
 
 ### 工程化
+- preact的切换，redux的引入改造
+- eslint git-hooks git分支的合并流程，push限制，走merge request代码审核
 - ci/cd，jest-webpack build-ares发布
 - 单元测试jest + enzyme
-- webpack的编译优化，dllplugin，happypack, webpackJSONP.require的拦截处理
-
+- webpack的编译优化，dllplugin，happypack, webpackJSONP.push 的拦截处理(https://www.processon.com/diagraming/60da903f1efad461e4570c3d)
+- webpack插件(资源合并插件，编译失败插件抛出101让pipeline中job失败)，styleInjectLoder自动注入同级目录的样式文件
+- 客户端的补偿渲染
+- 模板创建，git远端分支的定期清理，npm包版本依赖检查(npm outdated)
 ### 组件化
-- 
+- 全站的酒店搜索框，支持异步加载
+- 国际化shark扫描, AST语法识别正则匹配全量翻译字段，子进程进行
 
 ### 
