@@ -1,12 +1,22 @@
-- 性能优化，减少ttfb的时间(renderNodetoStream)，减少服务端请求的响应时间通过IP直连，资源优化，preload，图片webp, servicework
-- webpack打包优化：资源的拆分，dll，按需引入加载，tree shaking，ES6，ES5的分开打包，loader plugin的开发，webpack5的升级(踩坑：webpackJSON的名字改变)
-- 工程化，基于lerna的前端工具库的搭建开发，基于gitlab的CI/CD完成代码检查校验，单测检查以及最终的覆盖率展示。
-- 主要是react技术栈
-    - hooks
-    - fiber
-    - redux
+### 性能优化
+- lighthouse的相关指标以及实践优化
+    - 资源体积优化
+        - 异步的拆分，splitchunks常规
+        - webpack: resolve.alias (解决一些公共依赖因版本差异的重复打包问题)
+        - tree-shaking 分两个阶段没有做es6/es5拆分前，通过细化引入的path来解决(npm包没有对应的module: 'es/index.js'的时候，node_module的代码都是经过打包后的commonjs，webpack本身没法再做tree-shaking的分析了，所以需要人工介入)，做了拆分后依赖webpack自行打包逻辑来处理（组件化后的npm包支持了module: es的类型，然后本身module的字段优先级高于main字段，所以支持了es模块后可以借助webpack本身的tree-shaking）
+        - es5/es6的区分打包
+    - 服务端的流式下发，提升响应速度，提高ttfb
+    - 服务端的soa的ip直连，减少服务请求时间
+    - 组件化，减少js资源的请求
+    - 利用ares静态资源的合并
+    - webp图片，动态切图
 
+### 工程化
+- ci/cd，jest-webpack build-ares发布
+- 单元测试jest + enzyme
+- webpack的编译优化，dllplugin，happypack, webpackJSONP.require的拦截处理
 
-- node 
-    - nginx负载均衡
-    - 业务上根据UA判断online跳转h5通过nginx前置，优化性能
+### 组件化
+- 
+
+### 

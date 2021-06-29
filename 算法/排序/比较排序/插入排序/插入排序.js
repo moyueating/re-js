@@ -18,4 +18,4 @@ function insertSort(arr){
 	return arr;
 }
 
-console.log(insertSort([23,4,12,56,78, 34]))
+console.log(insertSort([23,4,12,56,78, 34]));
