@@ -15,6 +15,7 @@ class Dep {
 
 
 function defineReactive(obj, key, val) {
+  new Watcher()
   const dep = new Dep();
   Object.defineProperty(obj, key, {
     enumerable: true,
@@ -47,6 +48,7 @@ class Watcher {
   }
   update () {
     console.log("视图更新啦～");
+    Dep.target = null
   }
 }
 
@@ -55,7 +57,6 @@ class Vue {
   constructor(opts){
     this._data = opts.data
     observer(this._data)
-    new Watcher()
     console.log('render~', this._data.test);
   }
 }
@@ -66,10 +67,9 @@ var vue = new Vue({
     name: 'zkj'
   }
 })  
-// vue._data.test = 'sssss'
+vue._data.test = 'sssss'
+vue._data.test = '222'
 console.log(vue._data.test);
-
-Dep.target = null
 
 
 
