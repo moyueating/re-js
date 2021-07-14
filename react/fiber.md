@@ -1,0 +1,1 @@
+[这篇讲fiber更新effect这块讲的比较好](https://zhuanlan.zhihu.com/p/57346388)
