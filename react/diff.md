@@ -23,7 +23,7 @@ React是基于组件构建应用的，对于组件内的比较所采取的策略
 - move，通过唯一id key 来判断新旧集合中的节点类型保持一致，只是位置的不同，就需要移动  
 
 
-### React Fiber(它的主要目的是使虚拟DOM能够进行增量渲染)
+### React Fiber
 [React Fiber](https://www.infoq.cn/article/what-the-new-engine-of-react)
 
 [React Fiber](https://github.com/xxn520/react-fiber-architecture-cn)
