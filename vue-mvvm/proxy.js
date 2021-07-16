@@ -38,7 +38,6 @@ function observer(data){
     })
 }
 
-
 let data = {name: 111}
 let proxy = observer(data)
 proxy.name // 这层就是类似view上的取值
