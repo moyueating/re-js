@@ -1,5 +1,6 @@
 ### 性能优化
 - lighthouse的相关指标以及实践优化
+    - 通过报表分析具体的性能瓶颈
     - 资源体积优化
         - 异步的拆分，splitchunks常规
         - webpack: resolve.alias (解决一些公共依赖因版本差异的重复打包问题)
@@ -17,13 +18,19 @@
 - eslint git-hooks git分支的合并流程，push限制，走merge request代码审核
 - ci/cd，jest-webpack build-ares发布
 - 单元测试jest + enzyme
-- webpack的编译优化，dllplugin，happypack, webpackJSONP.push 的拦截处理(https://www.processon.com/diagraming/60da903f1efad461e4570c3d)
+- webpack的编译优化，dllplugin，happypack/thread-loader, webpackJSONP.push 的拦截处理(https://www.processon.com/diagraming/60da903f1efad461e4570c3d)
 - webpack插件(资源合并插件，编译失败插件抛出101让pipeline中job失败)，styleInjectLoder自动注入同级目录的样式文件，loadableLoader补充异步代码逻辑块
 - 客户端的补偿渲染， 记录initParams+url
 - 模板创建，git远端分支的定期清理，npm包版本依赖检查(npm outdated)
 
+## bff
+日志链路，每次请求共享一个logService实例，主要在soa和responseInterceptor的时候完成依赖收集和最终的日志记录
+异常过滤，AllExceptionFilter来实现nestjs的ExceptionFilter，里面更具具体的错误类型，比如未登录的自定义exception，反爬的exception以及请求失败这些case处理
+
+
 ### 组件化
 - 全站的酒店搜索框，支持异步加载
 - 国际化shark扫描, AST语法识别正则匹配全量翻译字段，子进程进行
+- 依赖管理，版本控制方便， 调试源码方便（相比较git subModules）
 
 ### 
