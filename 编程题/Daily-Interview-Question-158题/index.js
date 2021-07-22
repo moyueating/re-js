@@ -8,11 +8,20 @@ Array.prototype.mySplice = function(start, deletecount, ...addList){
 
     for(let i = start; i < start + deletecount; i++){
         result.push(this[i]);
-        delete this[i];
     }
 
-    for(let item of addList){
-        this.push(item)
+    let addCount = addList.length;
+    let step = 0;
+    if(addCount > deletecount){
+        step = addCount - deletecount;
+        let tail = this.slice(start+deletecount);
+        let i = start + deletecount;
+        while(tail.length){
+            this[i+step] = tail.shift();
+        }
+    }
+    for(let i = start; i < start + deletecount + step; i++){
+        this[i] = addList.shift()
     }
     let arr = this.filter(_ => _);
     this.length = 0;
@@ -20,5 +29,6 @@ Array.prototype.mySplice = function(start, deletecount, ...addList){
     return result
 }
 
-let a = [1,2,3,4,5];
-console.log(a.mySplice(0, 1), a);
+let a = [1,2,3,4,5,6];
+console.log(a.mySplice(2, 3, 7), a);
+// console.log(a.mySplice(2, 2, 7,8,9), a);

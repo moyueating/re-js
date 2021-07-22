@@ -11,19 +11,16 @@ function add(a, b, c){
 }
 
 function curry(fn){
-    if(fn.length <= 1) return fn;
-
-    function _curry(depth, ...args){
-        return function(...newArgs){
-            if(depth === 1){
-                return fn(...args, ...newArgs);
-            }else{
-                return _curry(depth - 1, ...args, ...newArgs)
+    function _curry(...args){
+        if(args.length >= fn.length){
+            return fn(...args)
+        }else{
+            return function(...arg){
+                return _curry(...args, ...arg);
             }
         }
     }
-
-    return _curry(fn.length)
+    return _curry
 }
 
 let wrapAdd = curry(add);

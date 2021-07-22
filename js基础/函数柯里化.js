@@ -44,6 +44,7 @@ function curry(fn){
 
 test = curry(add)
 console.log(test(3)(4)(5)(6))
+console.log(test(3, 4)(5)(6))
 
 
 

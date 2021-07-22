@@ -22,13 +22,6 @@ var entry = {
 function convert(entry){
     let result = {}
 
-    function test(target, key){
-        if(!target[key]){
-            target[key] = {};
-        }
-        return target
-    }
-
     for(let [key, value] of Object.entries(entry)){
         key.split('.').reduce((pre, current, index, arr) => {
             if(index === arr.length - 1){

@@ -62,24 +62,24 @@ let data = [
 ]
 
 // dfs
-function allPath(data){
-    let paths = []
-    function computePath(data, path){
-        data.forEach(item => {
-            let _path = [...path];
-            _path.push(item.id);
-            if(item.children && item.children.length){
-                computePath(item.children, _path);
-            }else{
-                paths.push(_path);
-            }
-        })
-    }
-    computePath(data, paths);
-    return paths;
-}
+// function allPath(data){
+//     let paths = []
+//     function computePath(data, path){
+//         data.forEach(item => {
+//             let _path = [...path];
+//             _path.push(item.id);
+//             if(item.children && item.children.length){
+//                 computePath(item.children, _path);
+//             }else{
+//                 paths.push(_path);
+//             }
+//         })
+//     }
+//     computePath(data, paths);
+//     return paths;
+// }
 
-// console.log(allPath(data, 1112));
+// console.log(allPath(data));
 
 
 // bfs
@@ -95,16 +95,18 @@ function allPath2(data, target){
     while(queue.length){
         let first = queue.shift();
         let path = path_queue.shift();
+        if(target === first.id){
+            queue = [];
+            result = path
+            continue;
+        }
         if(first.children){
             first.children.forEach(kid => {
                 queue.push(kid);
                 path_queue.push([...path, kid.id]);
             })
         }
-        if(target === first.id){
-            queue = [];
-            result = path
-        }
+
     }
 
     return result;

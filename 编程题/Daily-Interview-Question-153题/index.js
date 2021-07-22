@@ -26,10 +26,11 @@ function multiRequest1(urls, maxNum){
                     finished++;
                     response[index] = res;
                     send(tag++);
+
+                    if(finished == total){
+                        resolve(response);
+                    }
                 })
-            }
-            if(finished == total){
-                resolve(response);
             }
         }
         while(maxNum--){
