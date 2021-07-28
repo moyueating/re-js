@@ -26,4 +26,37 @@ function flatten(arr){
     }
     return result;
 }
-console.log(flatten(arr));
+// console.log(flatten(arr));
+
+
+function flatten2(arr, n){
+    function loop(arr, level){
+        let ret = [];
+       for(let item of arr){
+           if(Array.isArray(item) && level < n){
+               ret = ret.concat(loop(item, level+1))
+           }else{
+               ret.push(item);
+           }
+       }
+       return ret;
+    }
+    return loop(arr, 0)
+}
+
+let arr2 = [1,[2,[3,[4,5]]],6];
+// console.log(flatten2(arr2, 1));
+
+
+const flatten3 = (arr, deep) => {
+
+    deep = deep ? deep : Infinity;
+    while(deep && arr.some(item => Array.isArray(item))) {
+        arr = [].concat(...arr);
+        deep --;
+    }
+    return arr;
+}
+
+let arr3 = [1,[2,[3,[4,5]]],6];
+console.log(2222222222222,flatten3(arr3, 1));
