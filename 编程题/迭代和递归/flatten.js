@@ -27,3 +27,23 @@ function flatten(arr){
     return result;
 }
 console.log(flatten(arr));
+
+
+function flatten2(arr, level) {
+	function walk(arr, currLevel) {
+		let res = [];
+		for (let item of arr) {
+			if (Array.isArray(item) && currLevel < level) {
+				res = res.concat(walk(item, currLevel + 1));
+			} else {
+				res.push(item)
+			}
+		}
+		return res;
+	}
+	return walk(arr, 0);
+}
+
+let arr2 = [1, [2, [3, [4, 5]]]]
+var res = flatten2(arr2, 1);
+console.log(res);
