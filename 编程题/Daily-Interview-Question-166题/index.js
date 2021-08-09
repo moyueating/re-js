@@ -6,7 +6,7 @@
 
 function foo(...args){
     function target(...arg1s){
-        return foo(...[...args, ...arg1s]);
+        return foo(...args, ...arg1s);
     }
     target.getValue = function(){
         return args.reduce((p, c) => p+c, 0)

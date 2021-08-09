@@ -6,17 +6,14 @@
 // 4、重复步骤 3 直到某一指针达到序列尾；
 // 5、将另一序列剩下的所有元素直接复制到合并序列尾。
 function mergeSort(arr){
-
 	if(arr.length < 2){
 		return arr;
 	}
 	let mid = Math.floor(arr.length / 2)
 	let left = arr.slice(0, mid);
 	let right = arr.slice(mid)
-
 	return merge(mergeSort(left), mergeSort(right))
 }
-
 
 function merge(left, right){
 	let result = []
@@ -27,14 +24,12 @@ function merge(left, right){
 			result.push(right.shift())
 		}
 	}
-
 	while(left.length){
 		result.push(left.shift())
 	}
 	while(right.length){
 		result.push(right.shift())
 	}
-
 	return result
 }
 
