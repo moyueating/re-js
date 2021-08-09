@@ -41,8 +41,6 @@ function partition(arr, left, right){
 	arr[left] = pivot;
 	return left;
 }
-
-
 function quickSort(arr, left, right){
 	if(left <= right){
 		let pivot = partition(arr, left, right);

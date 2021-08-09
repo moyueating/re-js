@@ -9,7 +9,6 @@ let list =[
     {id:8,name:'部门H',parentId:4}
 ];
 
-
 function convert(list){
     let result = [];
     let ids = [];
