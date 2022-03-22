@@ -34,6 +34,7 @@ run(gen)
 // generator函数处理异步的问题
 // 首先需要将一般的异步操作封装成thunk函数
 // js中的thunk函数就是将多参数的函数转化为单一参数的函数
+// https://www.ruanyifeng.com/blog/2015/05/thunk.html
 
 readFile(path, function(err, data){
     console.log(data)

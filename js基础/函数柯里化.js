@@ -47,21 +47,15 @@ console.log(test(3)(4)(5)(6))
 console.log(test(3, 4)(5)(6))
 
 
-
-// function curry(fn){
-//     if(fn.length <= 1){
-//         return fn
-//     }
-
-//     function _curried(depth, ...args){
-//         return function(newArg){
-//             if(depth === 1){
-//                 return fn(...args, newArg)
-//             }else{
-//                 _curried(depth-1, ...args, newArg )
-//             }
-//         }
-//     }
-
-//     _curried(fn.length)
-// }
+function curry(fn){
+    function _curry(...args){
+        if(args.length > fn.length){
+            return fn(...args)
+        }else{
+            return function(...arg){
+                return _curry(...args, ...arg)
+            }
+        }
+    }
+    return _curry
+}

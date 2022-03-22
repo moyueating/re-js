@@ -20,11 +20,12 @@ const sendRequest = (urls, max) => {
                     finished++;
                     console.log(res, '已经完成数量', finished);
                     responses.push(res);
-                    handler();
+                    if (finished === total) {
+                        resolve(responses);
+                    }else{
+                        handler();
+                    }
                 });
-            }
-            if (finished === total) {
-                resolve(responses);
             }
         };
         while (max--) {
@@ -36,3 +37,25 @@ const sendRequest = (urls, max) => {
 sendRequest(urls, 4).then(data => {
     console.log('all complete', data);
 });
+
+
+// const sendRequest1 = (urls, max) => {
+//     return new Promise((resolve, reject) => {
+//         const total = urls.length
+//         let finished = 0
+//         function handler(){
+//             let url = urls.shift()
+//             if(url){
+//                 mockFetch(url).then(res => {
+//                     finished++
+//                     responses.push(res);
+//                     handler()
+//                 })
+//             }
+
+//         }
+//         while(max--){
+//             handler()
+//         }
+//     })
+// }

@@ -16,9 +16,9 @@
 
 ```js
 function compose(...fns){
-  return fns.reduce(function(initial, current){
+  return fns.reduce(function(accumulator, current){
     return function(...args) {
-      return initial(current(...args))
+      return accumulator(current(...args))
     }
   }) 
 }

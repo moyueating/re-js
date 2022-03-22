@@ -1,17 +1,47 @@
+mt
+
+### 统一构建
+- 构建日常迭代
+- webpack4 => webpack5的迁移
+- 日常得构建优化
+- 推广落地
+
+
+### SSR
+- ssr构建优化，并行（子进程中并发创建ssr构建进程）改串行（平衡点），内存消耗过大，子项目发布
+- 底层是基于serverless的，内置runtime去解析ssr-manifest.json,
+- 推广落地(两个bu逻辑)
+
+
+### 极速版Rome
+自动化创建 => 本地开发 => talos发布csr => arche ssr发布
+
+
+### 规范卡控
+- 版本依赖
+- 命名规范，处理约定是路由（自动化生成路由）
+
+
+
+
+xc
+
 ### 性能优化
 - lighthouse的相关指标以及实践优化
+    - 具体指标：TTFB, FCP, LCP, TTI, TBT, CLS
     - 通过报表分析具体的性能瓶颈
     - 资源体积优化
         - 异步的拆分，splitchunks常规
         - webpack: resolve.alias (解决一些公共依赖因版本差异的重复打包问题)
         - tree-shaking 分两个阶段没有做es6/es5拆分前，通过细化引入的path来解决(npm包没有对应的module: 'es/index.js'的时候，node_module的代码都是经过打包后的commonjs，webpack本身没法再做tree-shaking的分析了，所以需要人工介入)，做了拆分后依赖webpack自行打包逻辑来处理（组件化后的npm包支持了module: es的类型，然后本身module的字段优先级高于main字段，所以支持了es模块后可以借助webpack本身的tree-shaking）
-        - es5/es6的区分打包
+        - es5/es6的区分打包，通过不同的babel配置来实现，前端是通过是否支持type=module来
         - ie的动态polyfill方案基于开源的polyfill-service
-    - 服务端的流式下发，提升响应速度，提高ttfb
-    - 服务端的soa的ip直连，减少服务请求时间
+    - 服务端的流式下发，提升响应速度，提高ttfb，提升FCP
+    - 服务端的soa的ip直连，减少服务请求时间，提高ttfb，提升FCP
     - 组件化，减少js资源的请求
     - 利用ares静态资源的合并
     - webp图片，动态切图
+    - bff(做凉了)
 
 ### 工程化
 - preact的切换，redux的引入改造
