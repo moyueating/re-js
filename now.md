@@ -2,19 +2,19 @@ mt
 
 ### 统一构建
 - 构建日常迭代
-- webpack4 => webpack5的迁移
-- 日常得构建优化
-- 推广落地
+- webpack4 => webpack5的迁移 主要是适配devServer相关的
+- 日常得构建优化 内存优化 并行=>串行  增量构建方案
+- 推广落地 
 
 
 ### SSR
 - ssr构建优化，并行（子进程中并发创建ssr构建进程）改串行（平衡点），内存消耗过大，子项目发布
 - 底层是基于serverless的，内置runtime去解析ssr-manifest.json,
-- 推广落地(两个bu逻辑)
+- 推广落地(两个bu逻辑) 容器组外投项目 优选
 
 
 ### 极速版Rome
-自动化创建 => 本地开发 => talos发布csr => arche ssr发布
+自动化创建（本地rust） => 本地开发（复用本地的install，build产物） => talos发布csr => arche ssr发布
 
 
 ### 规范卡控
