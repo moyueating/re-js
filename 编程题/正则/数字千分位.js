@@ -16,19 +16,3 @@ function zzz(str){
     return result.join('');
 }
 console.log(zzz('1234567'))
-
-function sleep(time){
-    return new Promise((resolve) => {
-        setTimeout(resolve, time)
-    })
-}
-
-// sleep(2000).then(() => {
-//     console.log('2s后我醒了')
-// })
-
-async function sleep2(time){
-    await sleep(time)
-    console.log('4s后我醒了')
-}
-sleep2(4000)

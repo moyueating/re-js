@@ -8,8 +8,8 @@ mt
 
 
 ### SSR
-- ssr构建优化，并行（子进程中并发创建ssr构建进程）改串行（平衡点），内存消耗过大，子项目发布
-- 底层是基于serverless的，内置runtime去解析ssr-manifest.json,
+- ssr构建优化，并行（子进程中并发创建ssr构建进程）改串行（平衡点），内存消耗过大，子项目发布（类monorepo）
+- 底层是基于serverless的，内置runtime去解析ssr-manifest.json, 冷却大概在3s，整体发布在10s左右/单页面
 - 推广落地(两个bu逻辑) 容器组外投项目 优选
 
 
