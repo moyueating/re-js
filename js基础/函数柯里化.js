@@ -1,7 +1,7 @@
 
 // 柯里化（Currying）是把接受多个参数的函数变换成接受一个单一参数(最初函数的第一个参数)的函数，并且返回接受余下的参数且返回结果的新函数的技术
-function add(x,y,z,a){
-    return [x,y,z,a].reduce((pre, current) => pre + current, 0)
+function add(a,b){
+    return a+b
 }
 // 经过柯里化后返回的函数应该是这个
 // function curry(x){
@@ -43,19 +43,18 @@ function curry(fn){
 }
 
 test = curry(add)
-console.log(test(3)(4)(5)(6))
-console.log(test(3, 4)(5)(6))
+console.log(test(3)(4))
 
 
-function curry(fn){
-    function _curry(...args){
-        if(args.length > fn.length){
-            return fn(...args)
-        }else{
-            return function(...arg){
-                return _curry(...args, ...arg)
-            }
-        }
-    }
-    return _curry
-}
+// function curry(fn){
+//     function _curry(...args){
+//         if(args.length > fn.length){
+//             return fn(...args)
+//         }else{
+//             return function(...arg){
+//                 return _curry(...args, ...arg)
+//             }
+//         }
+//     }
+//     return _curry
+// }
